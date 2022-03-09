@@ -11,8 +11,6 @@ def get_opts():
     f = open("target/opt.txt")
     lines = f.read()
     f.close()
-    if os.path.exists("target/record.csv"):
-        os.remove("target/record.csv")
 
     # return [line.replace(" \n", "") for line in lines if line != ""]
     return re.findall("(-\S*)", lines)
@@ -26,16 +24,23 @@ def compile(flags):
 
 # execute target executable
 def exec():
-    subprocess.run("./MD > result.txt", shell=True, cwd="target")
+    subprocess.run("./MD > output.txt", shell=True, cwd="target")
 
 # retrive execution time
 def time():
-    f = open("target/result.txt")
+    f = open("target/output.txt")
     results = f.read()
     f.close()
 
     time = re.findall("timesteps took (\d+\.?\d*) seconds", results)
-    f = open("target/record.csv", "a+")
-    f.write(time[len(time) - 1]+"\n")
-    f.close()
     return float(time[len(time) - 1])
+
+first_touch = True
+def record(name, value):
+    global first_touch
+    if first_touch:
+        os.remove("target/record.csv")
+        first_touch = False
+    f = open("target/record.csv", "a+")
+    f.write(name+','+str(value)+"\n")
+    f.close()
