@@ -9,11 +9,13 @@ import os
 def get_opts():
     # read optimization flag from text file
     f = open("target/opt.txt")
-    lines = f.readlines()
+    lines = f.read()
     f.close()
-    os.remove("target/record.csv")
+    if os.path.exists("target/record.csv"):
+        os.remove("target/record.csv")
 
-    return [line.replace(" \n", "") for line in lines if line != ""]
+    # return [line.replace(" \n", "") for line in lines if line != ""]
+    return re.findall("(-\S*)", lines)
 
 def compile(flags):
     # gcc $flag -fopt-info -fsanitize=address MD.c control.c util.c -o MD -lm >> result.txt 2>&1
