@@ -6,9 +6,6 @@ def RIP(old, new):
     return (new - old) / old
 
 def BE():
-    # switches of optimizations, 1 means on, 0 means off
-    B = [1] * n_opt
-    
     # get baseline execution time
     separator = ' '
     flags = separator.join(opts)
@@ -16,6 +13,7 @@ def BE():
     target.exec()
     baseline_time = target.time()
 
+    # turn off each optimization to test whether it has neagtive effect
     negative_indices = [0] * n_opt
     for off in range(n_opt):
         local_opts = [opts[i] for i in range(n_opt) if i != off]
