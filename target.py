@@ -35,6 +35,15 @@ def time():
     time = re.findall("timesteps took (\d+\.?\d*) seconds", results)
     return float(time[len(time) - 1])
 
+# wrapper, compile, run, and get time
+def measure(list_of_flags):
+    separator = ' '
+    flags = separator.join(list_of_flags)
+    compile(flags)
+    exec()
+    return time()
+
+
 first_touch = True
 def record(name, value):
     global first_touch
