@@ -48,7 +48,8 @@ first_touch = True
 def record(name, value):
     global first_touch
     if first_touch:
-        os.remove("target/record.csv")
+        if os.path.exists("target/record.csv"):
+            os.remove("target/record.csv")
         first_touch = False
     f = open("target/record.csv", "a+")
     f.write(name+','+str(value)+"\n")
