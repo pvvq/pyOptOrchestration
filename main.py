@@ -143,6 +143,14 @@ opts = target.get_opts()
 n_opt = len(opts)
 print(str(n_opt)+" Avail optimizations: \n", opts, "\n")
 
+selected = BE()
+opt_time = target.measure(selected)
+print("BE opt orchestration exection time:"+ str(opt_time))
+
 selected = CE()
 opt_time = target.measure(selected)
-print("opt orchestration exection time:"+ str(opt_time))
+print("CE opt orchestration exection time:"+ str(opt_time))
+
+selected = IE()
+opt_time = target.measure(selected)
+print("IE opt orchestration exection time:"+ str(opt_time))
