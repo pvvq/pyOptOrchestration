@@ -6,8 +6,15 @@ import subprocess
 import re
 import os
 
+
 def get_opts():
-    # read optimization flag from text file
+    """Get optimization options
+
+    Returns:
+        list of optimization flags.
+
+        eg: ['-fdefer-pop', '-fdse']
+    """    
     f = open("target/opt.txt")
     lines = f.read()
     f.close()
@@ -16,18 +23,27 @@ def get_opts():
     return re.findall("(-\S*)", lines)
 
 def compile(flags):
+    """Compile
+
+    Args: 
+        flags: list of optimizations flags
+    """
     # gcc $flag -fopt-info -fsanitize=address MD.c control.c util.c -o MD -lm >> result.txt 2>&1
     # ./MD > test.txt
     # grep timesteps test.txt >> result.txt
     subprocess.run("gcc-11 " + flags + \
         " MD.c control.c util.c -o MD -lm", shell=True, cwd="target")
 
-# execute target executable
 def exec():
+    """Execute target executable"""
     subprocess.run("./MD > output.txt", shell=True, cwd="target")
 
-# retrive execution time
 def time():
+    """Retrive execution time
+
+    Returns:
+        execution time
+    """
     f = open("target/output.txt")
     results = f.read()
     f.close()
@@ -35,8 +51,15 @@ def time():
     time = re.findall("timesteps took (\d+\.?\d*) seconds", results)
     return float(time[len(time) - 1])
 
-# wrapper, compile, run, and get time
 def measure(list_of_flags):
+    """Wrapper, routine of compile, run, and get time
+
+    Args:
+        list_of_flags: list of flags
+
+    Returns:
+        exection time
+    """
     separator = ' '
     flags = separator.join(list_of_flags)
     compile(flags)
@@ -46,6 +69,12 @@ def measure(list_of_flags):
 
 first_touch = True
 def record(name, value):
+    """Record negative effect
+
+    Args:
+        name: description
+        value: value
+    """
     global first_touch
     if first_touch:
         if os.path.exists("target/record.csv"):
