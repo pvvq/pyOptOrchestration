@@ -4,7 +4,7 @@ Batch Elimination(BE), Iterative Elimination(IE) & Combined Elimination(CE).
 
 选择最佳的编译器优化选项的组合。
 
-实现了改论文提出的算法： [Fast and Effective Orchestration of Compiler Optimizations for Automatic Performance Tuning](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.142.4012&rep=rep1&type=pdf)
+实现了该论文提出的算法： [Fast and Effective Orchestration of Compiler Optimizations for Automatic Performance Tuning](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.142.4012&rep=rep1&type=pdf)
 
 ## 文件
 - `main.py`: BE, IE, CE 算法实现
