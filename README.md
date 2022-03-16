@@ -18,5 +18,8 @@ Implementation of paper: [Fast and Effective Orchestration of Compiler Optimizat
 3. customize all function in `target.py` to define your customized way to get optimization, compile, execute, and retrive execution time and log.
 4. run with `python main.py`
 
+## Licence
+In the hope that this piece of code would be useful, no copyright is left and welcome to make any use of it.
+
 ## Reference
 Pan Z, Eigenmann R. Fast and effective orchestration of compiler optimizations for automatic performance tuning[C]//International Symposium on Code Generation and Optimization (CGO'06). IEEE, 2006: 12 pp.-332.
