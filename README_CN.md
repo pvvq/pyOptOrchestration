@@ -16,5 +16,9 @@ Batch Elimination(BE), Iterative Elimination(IE) & Combined Elimination(CE).
 3. 修改 `target.py` 里面的所有函数，从而实现：获取优化选项的列表、编译、运行、获取运行时间、log 
 4. 运行：`python main.py`
 
+## 许可证
+
+WTFPL
+
 ## 参考文献
 Pan Z, Eigenmann R. Fast and effective orchestration of compiler optimizations for automatic performance tuning[C]//International Symposium on Code Generation and Optimization (CGO'06). IEEE, 2006: 12 pp.-332.
